@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		302106D62758027800F89E1F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302106D52758027800F89E1F /* Extensions.swift */; };
 		3086058927557E5C0050F703 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3086058827557E5C0050F703 /* AppDelegate.swift */; };
 		3086058B27557E5C0050F703 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3086058A27557E5C0050F703 /* SceneDelegate.swift */; };
 		3086058D27557E5C0050F703 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3086058C27557E5C0050F703 /* ConversationsViewController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		302106D52758027800F89E1F /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3086058527557E5C0050F703 /* ChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3086058827557E5C0050F703 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3086058A27557E5C0050F703 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 			children = (
 				3086058827557E5C0050F703 /* AppDelegate.swift */,
 				3086058A27557E5C0050F703 /* SceneDelegate.swift */,
+				302106D52758027800F89E1F /* Extensions.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -208,6 +211,7 @@
 				308605B1275586C30050F703 /* NewConversationViewController.swift in Sources */,
 				3086058D27557E5C0050F703 /* ConversationsViewController.swift in Sources */,
 				308605AE275586A60050F703 /* VideoPlayerViewController.swift in Sources */,
+				302106D62758027800F89E1F /* Extensions.swift in Sources */,
 				3086058927557E5C0050F703 /* AppDelegate.swift in Sources */,
 				308605B4275586D00050F703 /* ProfileViewController.swift in Sources */,
 				3086058B27557E5C0050F703 /* SceneDelegate.swift in Sources */,
