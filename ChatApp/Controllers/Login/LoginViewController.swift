@@ -49,7 +49,7 @@ class LoginViewController: UIViewController {
     private let loginButton: UIButton = {
         let button = UIButton()
         button.setTitle("Log In", for: .normal)
-        button.backgroundColor = .orange
+        button.backgroundColor = .systemOrange
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
         button.layer.masksToBounds = true
@@ -63,12 +63,22 @@ class LoginViewController: UIViewController {
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(didTapRegister))        
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
+                                                            style: .done,
+                                                            target: self,
+                                                            action: #selector(didTapRegister))
+        
+        loginButton.addTarget(self,
+                              action: #selector(loginButtonTapped),
+                              for: .touchUpInside)
+        
+        emailField.delegate = self
+        passwordField.delegate = self
         
         //Adding subviews
         view.addSubview(scrollView)
@@ -96,10 +106,33 @@ class LoginViewController: UIViewController {
                                      width: scrollView.width-60,
                                      height: 52)
         loginButton.frame = CGRect(x: 30,
-                                     y: passwordField.bottom+10,
-                                     width: scrollView.width-60,
-                                     height: 52)
+                                   y: passwordField.bottom+10,
+                                   width: scrollView.width-60,
+                                   height: 52)
         
+    }
+    
+    @objc private func loginButtonTapped() {
+        
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
+        
+        guard let email = emailField.text, let password = passwordField.text,
+              !email.isEmpty, !password.isEmpty, password.count >= 6 else {
+            alertUserLoginError()
+            return
+        }
+        
+        //Firebase Login
+        
+        
+    }
+    
+    func alertUserLoginError() {
+        let alert = UIAlertController(title: "Missed Something", message: "Please enter all necessary information to login.", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss",
+                                      style: .cancel, handler: nil))
+        present(alert, animated: true)
     }
     
     @objc private func didTapRegister() {
@@ -107,6 +140,21 @@ class LoginViewController: UIViewController {
         vc.title = "Create Account"
         navigationController?.pushViewController(vc, animated: true)
     }
-
-
+    
 }
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == emailField {
+            passwordField.becomeFirstResponder()
+        }
+        else if textField == passwordField {
+            loginButtonTapped()
+        }
+        
+        return true
+    }
+}
+
