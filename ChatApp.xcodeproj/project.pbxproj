@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		301E8609275ECA1500C7D2D6 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 301E8608275ECA1500C7D2D6 /* MessageKit */; };
+		301E860D275ECA5A00C7D2D6 /* JGProgressHUD-SwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 301E860C275ECA5A00C7D2D6 /* JGProgressHUD-SwiftUI */; };
+		301E8611275ECB2200C7D2D6 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 301E8610275ECB2200C7D2D6 /* RealmSwift */; };
 		302106D62758027800F89E1F /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 302106D52758027800F89E1F /* Extensions.swift */; };
 		3027F779275823FE0044D572 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 3027F778275823FE0044D572 /* FirebaseAuth */; };
 		3027F77B275823FE0044D572 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3027F77A275823FE0044D572 /* FirebaseFirestore */; };
@@ -53,10 +56,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301E860D275ECA5A00C7D2D6 /* JGProgressHUD-SwiftUI in Frameworks */,
 				3027F77D275823FE0044D572 /* FirebaseDatabase in Frameworks */,
+				301E8611275ECB2200C7D2D6 /* RealmSwift in Frameworks */,
 				30CAD179275EB19800714145 /* GoogleSignIn in Frameworks */,
 				3027F779275823FE0044D572 /* FirebaseAuth in Frameworks */,
 				3027F77B275823FE0044D572 /* FirebaseFirestore in Frameworks */,
+				301E8609275ECA1500C7D2D6 /* MessageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,6 +177,9 @@
 				3027F77A275823FE0044D572 /* FirebaseFirestore */,
 				3027F77C275823FE0044D572 /* FirebaseDatabase */,
 				30CAD178275EB19800714145 /* GoogleSignIn */,
+				301E8608275ECA1500C7D2D6 /* MessageKit */,
+				301E860C275ECA5A00C7D2D6 /* JGProgressHUD-SwiftUI */,
+				301E8610275ECB2200C7D2D6 /* RealmSwift */,
 			);
 			productName = ChatApp;
 			productReference = 3086058527557E5C0050F703 /* ChatApp.app */;
@@ -202,6 +211,9 @@
 			packageReferences = (
 				3027F777275823FE0044D572 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				30CAD177275EB19800714145 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				301E8607275ECA1400C7D2D6 /* XCRemoteSwiftPackageReference "MessageKit" */,
+				301E860B275ECA5A00C7D2D6 /* XCRemoteSwiftPackageReference "JGProgressHUD-SwiftUI" */,
+				301E860F275ECB2100C7D2D6 /* XCRemoteSwiftPackageReference "realm-cocoa" */,
 			);
 			productRefGroup = 3086058627557E5C0050F703 /* Products */;
 			projectDirPath = "";
@@ -445,6 +457,30 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		301E8607275ECA1400C7D2D6 /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.7.0;
+			};
+		};
+		301E860B275ECA5A00C7D2D6 /* XCRemoteSwiftPackageReference "JGProgressHUD-SwiftUI" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/JonasGessner/JGProgressHUD-SwiftUI.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.1;
+			};
+		};
+		301E860F275ECB2100C7D2D6 /* XCRemoteSwiftPackageReference "realm-cocoa" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.20.0;
+			};
+		};
 		3027F777275823FE0044D572 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -464,6 +500,21 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		301E8608275ECA1500C7D2D6 /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 301E8607275ECA1400C7D2D6 /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
+		};
+		301E860C275ECA5A00C7D2D6 /* JGProgressHUD-SwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 301E860B275ECA5A00C7D2D6 /* XCRemoteSwiftPackageReference "JGProgressHUD-SwiftUI" */;
+			productName = "JGProgressHUD-SwiftUI";
+		};
+		301E8610275ECB2200C7D2D6 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 301E860F275ECB2100C7D2D6 /* XCRemoteSwiftPackageReference "realm-cocoa" */;
+			productName = RealmSwift;
+		};
 		3027F778275823FE0044D572 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 3027F777275823FE0044D572 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

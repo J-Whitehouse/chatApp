@@ -7,6 +7,7 @@
 
 import UIKit
 import FirebaseAuth
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
@@ -65,8 +66,12 @@ class LoginViewController: UIViewController {
         return imageView
     }()
     
+    private let googleLogInButton = GIDSignInButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        title = "Log In"
         view.backgroundColor = .white
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
@@ -87,6 +92,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
+        googleLogInButton.addTarget(self, action: #selector(googleSignInButtonTapped), for: .touchUpInside)
     }
     
     override func viewDidLayoutSubviews() {
@@ -110,8 +116,23 @@ class LoginViewController: UIViewController {
                                    y: passwordField.bottom+10,
                                    width: scrollView.width-60,
                                    height: 52)
+        googleLogInButton.frame = CGRect(x: 30,
+                                   y: loginButton.bottom+10,
+                                   width: scrollView.width-60,
+                                   height: 52)
         
     }
+    
+    @objc private func googleSignInButtonTapped() {
+            guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
+                  let signInConfig = appDelegate.signInConfig else {
+                return
+            }
+            GIDSignIn.sharedInstance.signIn(with: signInConfig, presenting: self) { user, error in
+                guard let user = user, error == nil else { return }
+                appDelegate.handleSessionRestore(user: user)
+            }
+        }
     
     @objc private func loginButtonTapped() {
         
