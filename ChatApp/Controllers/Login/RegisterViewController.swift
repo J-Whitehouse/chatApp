@@ -200,17 +200,14 @@ class RegisterViewController: UIViewController {
             }
             
             FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
-                guard let strongSelf = self else{
-                    return
-                }
-                guard authResult != authResult, error == nil else {
+                guard authResult != nil, error == nil else {
                     print("Error creating user")
                     return
                 }
                 
                 DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
                                                                     lastName: lastName,
-                                                                    emailAdress: email))
+                                                                    emailAddress: email))
                 
                 strongSelf.navigationController?.dismiss(animated: true, completion: nil)
             })
