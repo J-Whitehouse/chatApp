@@ -21,7 +21,42 @@ class ProfileViewController: UIViewController {
                            forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.tableHeaderView = createTableHeader()
     
+    }
+    
+    func createTableHeader() -> UIView? {
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            return nil
+        }
+        
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
+        let filename = safeEmail + "_profile_picture.png"
+        
+        let path = "images/"+filename
+        
+        let headerView = UIView(frame: CGRect(x: 0,
+                                        y: 0,
+                                        width: self.view.width,
+                                        height: 300))
+        
+        headerView.backgroundColor = .link
+        
+        let imageView = UIImageView(frame: CGRect(x: (headerView.width-150)/2,
+                                                  y: 75,
+                                                  width: 150,
+                                                  height: 150))
+        
+        imageView.contentMode = .scaleAspectFill
+        imageView.backgroundColor = .white
+        imageView.layer.borderColor = UIColor.white.cgColor
+        imageView.layer.borderWidth = 3
+        imageView.layer.masksToBounds = true
+        imageView.layer.cornerRadius = imageView.width/2
+        headerView.addSubview(imageView)
+        
+        return headerView
+        
     }
 }
 
@@ -34,7 +69,7 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         cell.textLabel?.text = data[indexPath.row]
         cell.textLabel?.textAlignment = .center
-        cell.textLabel?.textColor = .darkText
+        cell.textLabel?.textColor = .systemRed
         return cell
     }
     
