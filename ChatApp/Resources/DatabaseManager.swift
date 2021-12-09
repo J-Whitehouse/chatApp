@@ -113,6 +113,41 @@ extension DatabaseManager {
     }
 }
 
+//MARK: Sending Messages
+
+extension DatabaseManager {
+    
+    public func createNewConversation(with otherUserEmail: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
+        
+    }
+    
+    public func getAllConversations(for email: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+    }
+    
+    public func getAllMessagesForConversation(with id: String, completion: @escaping (Result<String, Error>) -> Void) {
+        
+    }
+    
+    public func sendMessage(to conversation: String, mmessage: Message, completion: @escaping (Bool) -> Void) {
+        
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 struct ChatAppUser {
     let firstName: String
     let lastName: String
