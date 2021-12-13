@@ -10,32 +10,68 @@ import MessageKit
 import InputBarAccessoryView
 
 struct Message: MessageType {
-    var sender: SenderType
-    var messageId: String
-    var sentDate: Date
-    var kind: MessageKind
+    public var sender: SenderType
+    public var messageId: String
+    public var sentDate: Date
+    public var kind: MessageKind
+}
+
+extension MessageKind {
+    var messageKindString: String {
+        switch self {
+        
+        case .text(_):
+            return "text"
+        case .attributedText(_):
+            return "attributed_text"
+        case .photo(_):
+            return "photo"
+        case .video(_):
+            return "video"
+        case .location(_):
+            return "location"
+        case .emoji(_):
+            return "emoji"
+        case .audio(_):
+            return "audio"
+        case .contact(_):
+            return "contact"
+        case .linkPreview(_):
+            return "link_preview"
+        case .custom(_):
+            return "custom"
+        }
+    }
 }
 
 struct Sender: SenderType {
-    var photoURL: String
-    var senderId: String
-    var displayName: String
+    public var photoURL: String
+    public var senderId: String
+    public var displayName: String
 }
 
 class ChatViewController: MessagesViewController {
     
+    public static let dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .long
+        formatter.locale = .current
+        return formatter
+    }()
+    
     public var isNewConversation = false
     
-    public let otherUserEmail: String
+    public var otherUserEmail: String
 
     private var messages = [Message]()
     
     private var selfSender: Sender? {
-        guard let email = UserDefaults.standard.value(forKey: "email") else {
+        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
             return nil
         }
         
-        Sender(photoURL: "",
+        return Sender(photoURL: "",
                senderId: email,
                displayName: "Joe Smith")
     }
@@ -73,7 +109,8 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
         guard !text.replacingOccurrences(of: " ", with: "").isEmpty,
-              let selfSender = self.selfSender else {
+              let selfSender = self.selfSender,
+              let messageId = createMessageId() else {
                 return
         }
         
@@ -81,14 +118,29 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
         //send the message
         if isNewConversation {
             let mmessage = Message(sender: selfSender,
-                                   messageId: <#T##String#>,
+                                   messageId: messageId,
                                    sentDate: Date(),
                                    kind: .text(text))
-            DatabaseManager.shared.createNewConversation(with: otherUserEmail, firstMessage: <#T##Message#>, completion: <#T##(Bool) -> Void#>)
-        }
-        else {
+            DatabaseManager.shared.createNewConversation(with: otherUserEmail, firstMessage: mmessage, completion: { [weak self] success in
+                if success {
+                    print("message sent")
+                } else {
+                    print("failed to send")
+                }
+            } )
+        } else {
             
         }
+    }
+    
+    private func createMessageId() -> String? {
+        guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else {
+            return nil
+        }
+        let safeCurrentEmail = DatabaseManager.safeEmail(emailAddress: currentUserEmail)
+        let dateString = Self.dateFormatter.string(from: Date())
+        let newIdentifier = "\(otherUserEmail)_\(safeCurrentEmail)_\(dateString)"
+        return newIdentifier
     }
 }
 
