@@ -30,6 +30,7 @@
 		308605B4275586D00050F703 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 308605B3275586D00050F703 /* ProfileViewController.swift */; };
 		30CAD172275E966500714145 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30CAD171275E966400714145 /* DatabaseManager.swift */; };
 		30CAD179275EB19800714145 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 30CAD178275EB19800714145 /* GoogleSignIn */; };
+		30FF33552767F71000959DB7 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 30FF33542767F71000959DB7 /* ConversationTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		308605B0275586C30050F703 /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		308605B3275586D00050F703 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		30CAD171275E966400714145 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		30FF33542767F71000959DB7 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,6 +121,7 @@
 			children = (
 				308605A1275585810050F703 /* Storyboards */,
 				3086059127557E680050F703 /* Assets.xcassets */,
+				30FF33542767F71000959DB7 /* ConversationTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				302106D62758027800F89E1F /* Extensions.swift in Sources */,
 				3086058927557E5C0050F703 /* AppDelegate.swift in Sources */,
 				308605B4275586D00050F703 /* ProfileViewController.swift in Sources */,
+				30FF33552767F71000959DB7 /* ConversationTableViewCell.swift in Sources */,
 				3086058B27557E5C0050F703 /* SceneDelegate.swift in Sources */,
 				302C42012761534B00335066 /* ChatViewController.swift in Sources */,
 				308605AB2755869B0050F703 /* PhotoViewerViewController.swift in Sources */,
